@@ -1,0 +1,71 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Genesys Cloud Certification Quiz</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .question { font-weight: bold; margin-top: 20px; }
+        .option { margin: 5px 0; }
+        .feedback { margin-top: 10px; font-style: italic; }
+        .navigation { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Genesys Cloud Certification Quiz</h1>
+    <div id="quiz-container"></div>
+    <script>
+        let currentQuestion = 0;
+        let score = 0;
+        let questions = [];
+
+        fetch('quiz_bank.json')
+            .then(response => response.json())
+            .then(data => {
+                questions = data;
+                showQuestion();
+            });
+
+        function showQuestion() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+            if (currentQuestion >= questions.length) {
+                container.innerHTML = `<h2>Quiz Completed</h2><p>Your score: ${score} out of ${questions.length}</p>`;
+                return;
+            }
+            const q = questions[currentQuestion];
+            const qDiv = document.createElement('div');
+            qDiv.className = 'question';
+            qDiv.textContent = `Q${currentQuestion + 1}: ${q.question}`;
+            container.appendChild(qDiv);
+
+            q.options.forEach(option => {
+                const btn = document.createElement('button');
+                btn.className = 'option';
+                btn.textContent = option;
+                btn.onclick = () => {
+                    const feedback = document.createElement('div');
+                    feedback.className = 'feedback';
+                    if (option === q.answer) {
+                        score++;
+                        feedback.textContent = `✅ Correct! ${q.explanation}`;
+                    } else {
+                        feedback.textContent = `❌ Incorrect. ${q.explanation}`;
+                    }
+                    container.appendChild(feedback);
+                    const nextBtn = document.createElement('button');
+                    nextBtn.className = 'navigation';
+                    nextBtn.textContent = 'Next';
+                    nextBtn.onclick = () => {
+                        currentQuestion++;
+                        showQuestion();
+                    };
+                    container.appendChild(nextBtn);
+                };
+                container.appendChild(btn);
+            });
+        }
+    </script>
+</body>
+</html>

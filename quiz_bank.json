@@ -1,0 +1,79 @@
+[
+  {
+    "question": "What is the function of Edges in Genesys Cloud?",
+    "options": [
+      "To manage agent roles",
+      "To route interactions",
+      "To handle telephony connections",
+      "To monitor performance"
+    ],
+    "answer": "To handle telephony connections",
+    "explanation": "Edges in Genesys Cloud are responsible for telephony connectivity. They bridge the Genesys Cloud platform with your telephony infrastructure, handling routing, media streams, and external connections."
+  },
+  {
+    "question": "Which licensing level includes access to Architect for flow design in Genesys Cloud?",
+    "options": [
+      "Collaborate",
+      "Communicate",
+      "Contact Center",
+      "Analytics"
+    ],
+    "answer": "Contact Center",
+    "explanation": "The Contact Center license level includes access to Architect, which is used to design call flows, configure routing logic, and manage inbound/outbound flows. Lower license levels do not include Architect."
+  },
+  {
+    "question": "What does ACD stand for in Genesys Cloud?",
+    "options": [
+      "Automated Call Distribution",
+      "Agent Communication Device",
+      "Advanced Contact Dashboard",
+      "Automatic Collaboration Design"
+    ],
+    "answer": "Automated Call Distribution",
+    "explanation": "ACD stands for Automated Call Distribution. It automatically routes incoming interactions to the most appropriate agent or queue based on skills, language, and availability."
+  },
+  {
+    "question": "Which dashboard in Genesys Cloud allows customization of performance metrics for agents, queues, and interactions?",
+    "options": [
+      "Architect",
+      "Performance Dashboard",
+      "Interaction View",
+      "Agent Script Editor"
+    ],
+    "answer": "Performance Dashboard",
+    "explanation": "The Performance Dashboard allows supervisors to track agent performance, queue metrics, and interaction statistics. It supports real-time and historical data and customizable widgets."
+  },
+  {
+    "question": "Which Genesys Cloud feature allows users to collaborate internally using chat, video, and file sharing?",
+    "options": [
+      "Architect",
+      "Communicate",
+      "Collaborate",
+      "Contact Center"
+    ],
+    "answer": "Collaborate",
+    "explanation": "Genesys Cloud Collaborate enables internal communication through chat, video calls, file sharing, and group workspaces. It enhances team productivity and is available via web and desktop apps."
+  },
+  {
+    "question": "Which tool in Genesys Cloud is used to create and manage agent scripts for guided interactions?",
+    "options": [
+      "Architect",
+      "Agent Script Editor",
+      "Performance Dashboard",
+      "Interaction View"
+    ],
+    "answer": "Agent Script Editor",
+    "explanation": "The Agent Script Editor is used to create scripts that guide agents during interactions. Scripts include prompts, dynamic content, branching logic, and embedded actions to ensure consistency and compliance."
+  },
+  {
+    "question": "Which view in Genesys Cloud allows supervisors to monitor in-progress interactions in real time?",
+    "options": [
+      "Architect",
+      "Performance Dashboard",
+      "Interaction View",
+      "Agent Script Editor"
+    ],
+    "answer": "Interaction View",
+    "explanation": "The Interaction View provides real-time visibility into ongoing interactions, allowing supervisors to monitor agent activity, interaction status, and customer engagement."
+  }
+]
