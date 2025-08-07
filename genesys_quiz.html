@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Genesys Cloud Certification Quiz</title>
+    <style>
+        body { font-family: Arial; margin: 20px; }
+        .question-box { margin-bottom: 20px; }
+        .feedback { margin-top: 10px; font-weight: bold; }
+        .summary { margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Genesys Cloud Certification Quiz</h1>
+    <div id="quiz-container"></div>
+    <div class="summary" id="summary"></div>
+
+    <script>
+        let currentQuestion = 0;
+        let score = 0;
+        let quizData = [];
+        let userAnswers = [];
+
+        async function loadQuiz() {
+            const response = await fetch('quiz_bank.json');
+            const data = await response.json();
+            quizData = data.sort(() => 0.5 - Math.random()).slice(0, 55);
+            showQuestion();
+        }
+
+        function showQuestion() {
+            if (currentQuestion >= quizData.length) {
+                showSummary();
+                return;
+            }
+
+            const q = quizData[currentQuestion];
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = `
+                <div class="question-box">
+                    <h3>Question ${currentQuestion + 1} of ${quizData.length}</h3>
+                    <p>${q.question}</p>
+                    ${q.options.map((opt, i) => `<button onclick="checkAnswer('${opt}')">${opt}</button>`).join('<br>')}
+                    <div class="feedback" id="feedback"></div>
+                </div>
+            `;
+        }
+
+        function checkAnswer(selected) {
+            const q = quizData[currentQuestion];
+            const feedback = document.getElementById('feedback');
+            if (selected === q.answer) {
+                score++;
+                feedback.innerHTML = `✅ Correct!<br><em>${q.explanation}</em>`;
+            } else {
+                feedback.innerHTML = `❌ Incorrect. Correct answer: ${q.answer}<br><em>${q.explanation}</em>`;
+            }
+            userAnswers.push({ question: q.question, selected, correct: q.answer });
+            setTimeout(() => {
+                currentQuestion++;
+                showQuestion();
+            }, 2000);
+        }
+
+        function showSummary() {
+            const container = document.getElementById('quiz-container');
+            container.innerHTML = '';
+            const summary = document.getElementById('summary');
+            summary.innerHTML = `
+                <h2>Quiz Completed</h2>
+                <p>Your score: ${score} out of ${quizData.length}</p>
+            `;
+        }
+
+        loadQuiz();
+    </script>
+</body>
+</html>
